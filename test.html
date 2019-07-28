@@ -1,0 +1,64 @@
+<html>
+    <head>
+            <meta charset="utf-8">
+            <title>BotUI - Hello World</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui.min.css" />
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui-theme-default.css" />
+        
+        <body>
+                <script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/botui/build/botui.js"></script>
+                <div class="botui-app-container" id="hello-world">
+                        <bot-ui></bot-ui>
+                      </div>
+            <script>
+var string = ' ';
+                 json = [[{"a":2,"b":3}],[{"a":4,"b":5}]] ;
+             /*  var str = '{"a": 1, "b": 2, "c": 3}%'+
+        //  #'{"a": 4, "b": 5, "c": 6}%'+ '{"a": 14, "b": 24, "c": 34}' //
+
+var strLines = str.split("%"); */
+                var botui = new BotUI('hello-world');
+ 
+    for(var i = 0; i < json.length; i++) {
+    var obj = json[i];
+
+    
+
+    
+  // json.forEach(function (item){
+    //console.log(json.a);
+    //string += item.a + ' ';
+    //
+    botui.action.button({
+  action: [
+    { // show only one button
+      text: obj.a,
+      value: obj.a
+    },
+    {
+        text: obj.b,
+        value: obj.b
+    }
+  ]})
+.then(function (res) { // will be called when a button is clicked.
+  console.log(res.value); // will print "one" from 'value'
+});
+    }
+ //  });
+
+   // })
+//                }
+            </script>
+
+            <div id="demo">
+                <p>Items</p>
+                <li>Veggie</li>
+                <li>Maggi</li>
+            </div>
+
+            document.getElementById("demo").innerHTML = string;
+        </body>
+    </head>
+</html>
